@@ -19,6 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class KafkaConsumer {
 	
+	
 	private final SimpMessagingTemplate simpMessagingTemplate;
 	
 	public KafkaConsumer(SimpMessagingTemplate simpMessagingTemplate) {
