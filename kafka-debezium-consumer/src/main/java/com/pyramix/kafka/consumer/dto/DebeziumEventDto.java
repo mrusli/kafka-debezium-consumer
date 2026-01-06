@@ -20,8 +20,8 @@ public class DebeziumEventDto {
 	@Data
 	public static class Payload {
 		private Source source;
-		private Map<String, Object> before;
-		private Map<String, Object> after;
+		private Map<String,Object> before;
+		private Map<String,Object> after;
 		
 		@JsonDeserialize(using = OperationTypeDeserializer.class)
 		@JsonProperty("op")

@@ -38,11 +38,7 @@
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-		<dependency>
-		    <groupId>com.google.code.gson</groupId>
-		    <artifactId>gson</artifactId>
-		</dependency>
+
 		<dependency>
 		    <groupId>tools.jackson.core</groupId>
 		    <artifactId>jackson-databind</artifactId>

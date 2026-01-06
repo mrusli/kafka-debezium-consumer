@@ -1,7 +1,7 @@
 package com.pyramix.kafka.consumer.config.jackson;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.ZoneOffset;
 
 import lombok.extern.slf4j.Slf4j;
@@ -10,13 +10,13 @@ import tools.jackson.core.JsonParser;
 import tools.jackson.databind.DeserializationContext;
 
 @Slf4j
-public class MillisToLocalDateTimeDeserializer extends tools.jackson.databind.ValueDeserializer<LocalDateTime> {
+public class MillisToLocalDateDeserializer extends tools.jackson.databind.ValueDeserializer<LocalDate> {
 
 	@Override
-	public LocalDateTime deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws JacksonException {
+	public LocalDate deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws JacksonException {
 		final long timestamp = jsonParser.getLongValue();
 		log.info("JsonParser Reads: {}", jsonParser.getLongValue());
-		return LocalDateTime.ofInstant(Instant.ofEpochMilli(timestamp), ZoneOffset.ofHours(+7));
+		return LocalDate.ofInstant(Instant.ofEpochMilli(timestamp), ZoneOffset.ofHours(+7));
 	}
 
 }
