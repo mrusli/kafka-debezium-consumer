@@ -1,11 +1,9 @@
 package com.pyramix.kafka.consumer.dto;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.pyramix.kafka.consumer.config.jackson.MillisToLocalDateDeserializer;
-import com.pyramix.kafka.consumer.config.jackson.MillisToLocalDateTimeDeserializer;
+import com.pyramix.kafka.consumer.config.jackson.IsoStringToLocalDateTimeDeserializer;
 
 import lombok.Data;
 import tools.jackson.databind.annotation.JsonDeserialize;
@@ -15,11 +13,11 @@ public class Dto_Auth_User_Role {
 
 	private Long id;
 	
-	@JsonDeserialize(using = MillisToLocalDateDeserializer.class)
+	@JsonDeserialize(using = IsoStringToLocalDateTimeDeserializer.class)
 	@JsonFormat
-	private LocalDate createdDate;
+	private LocalDateTime createdDate;
 	
-	@JsonDeserialize(using = MillisToLocalDateTimeDeserializer.class)
+	@JsonDeserialize(using =IsoStringToLocalDateTimeDeserializer.class)
 	@JsonFormat
 	private LocalDateTime lastModifiedDate;
 	

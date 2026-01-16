@@ -8,11 +8,13 @@
 		<version>4.0.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	
 	<groupId>com.pyramix</groupId>
-	<artifactId>kafka-consumer</artifactId>
+	<artifactId>kafka-debezium-consumer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>kafka-consumer</name>
-	<description>Work with Kafka messages</description>
+	
+	<name>kafka-debezium-consumer</name>
+	<description>Work with Kafka debezium messages</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -38,7 +40,6 @@
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
-
 		<dependency>
 		    <groupId>tools.jackson.core</groupId>
 		    <artifactId>jackson-databind</artifactId>
