@@ -19,7 +19,7 @@ public class MillisToLocalDateTimeDeserializer extends tools.jackson.databind.Va
 		final long timestamp = Long.parseLong(timestampStr);
 		log.info("DateTime as Long: {}", timestamp);
 		return Instant.ofEpochMilli(timestamp)
-				.atZone(ZoneId.systemDefault())
+				.atZone(ZoneId.of("Asia/Jakarta"))
 				.toLocalDateTime();
 		
 		// log.info("DateTimeDeserializer - JsonParser Reads: {}", jsonParser.getLongValue());

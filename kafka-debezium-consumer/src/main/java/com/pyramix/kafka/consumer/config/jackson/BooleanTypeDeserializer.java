@@ -14,6 +14,4 @@ public class BooleanTypeDeserializer extends tools.jackson.databind.ValueDeseria
 		log.info("JsonParser Reads: {}", jsonParser.getString());
 		return booleanValue.equals("T") ? true : false;
 	}
-
-
 }

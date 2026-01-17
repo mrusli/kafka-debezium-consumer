@@ -17,7 +17,6 @@ public class IsoStringToLocalDateDeserializer extends tools.jackson.databind.Val
 	@Override
 	public LocalDate deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws JacksonException {
 		SimpleDateFormat sourceFormat = new SimpleDateFormat("yyyy-MM-dd'Z'");
-		// SimpleDateFormat destFormat = new SimpleDateFormat("yyyy-MM-dd");
 		final String timestampStr = jsonParser.getString();
 		log.info("Date as String: {}", timestampStr);
 		Date convertedDate = null;
@@ -29,12 +28,7 @@ public class IsoStringToLocalDateDeserializer extends tools.jackson.databind.Val
 		}
 		
 		return convertedDate.toInstant()
-				.atZone(ZoneId.systemDefault())
+				.atZone(ZoneId.of("Asia/Jakarta"))
 				.toLocalDate();
-		// final Long timestamp = Long.parseLong(timestampStr);
-		// log.info("Date as Long: {}", timestamp);
-		// Instant instant = Instant.ofEpochMilli(timestamp);
-		// return instant.atZone(ZoneId.systemDefault()).toLocalDate();
 	}
-
 }

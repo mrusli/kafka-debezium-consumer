@@ -28,7 +28,7 @@ public class IsoStringToLocalDateTimeDeserializer extends tools.jackson.databind
 		}
 		
 		return convertedDatetime.toInstant()
-				.atZone(ZoneId.systemDefault())
+				.atZone(ZoneId.of("Asia/Jakarta"))
 				.toLocalDateTime();
 	}
 

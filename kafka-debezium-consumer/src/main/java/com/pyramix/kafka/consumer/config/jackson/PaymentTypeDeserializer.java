@@ -8,10 +8,10 @@ import tools.jackson.core.JsonParser;
 import tools.jackson.databind.DeserializationContext;
 
 @Slf4j
-public class PaymentTypeDeserializer extends tools.jackson.databind.ValueDeserializer<PaymentType> {@Override
+public class PaymentTypeDeserializer extends tools.jackson.databind.ValueDeserializer<PaymentType> {
 	
+	@Override
 	public PaymentType deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws JacksonException {
 		return PaymentType.fromValue(jsonParser.getValueAsInt());
 	}
-	
 }

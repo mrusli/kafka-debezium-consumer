@@ -17,7 +17,7 @@ public class Dto_Customer_Order_Tmp {
 	
 	private int version;
 	
-	@JsonDeserialize(using = IsoStringToLocalDateDeserializer .class)
+	@JsonDeserialize(using = IsoStringToLocalDateDeserializer.class)
 	@JsonFormat
 	private LocalDate order_date;
 	
