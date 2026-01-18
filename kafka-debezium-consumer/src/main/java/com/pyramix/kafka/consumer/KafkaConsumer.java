@@ -9,7 +9,7 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
 
 import com.pyramix.kafka.consumer.dto.DebeziumEventDto;
-import com.pyramix.kafka.consumer.dto.Dto_Auth_User_Role;
+import com.pyramix.kafka.consumer.dto.Dto_Auth_User;
 import com.pyramix.kafka.consumer.dto.Dto_Customer_Order_Tmp;
 
 import lombok.extern.slf4j.Slf4j;
@@ -27,27 +27,7 @@ public class KafkaConsumer {
 		this.simpMessagingTemplate = simpMessagingTemplate;
 		log.info("Kafka Consumer created");
 	}
-
-	@KafkaListener(topics = {"mysql-topic.e050_pyramix_schema.auth_user_role"})
-	public void listen_01(DebeziumEventDto dto) {
-        log.info(dto.toString());
-        log.info("Database Schema:  {}", dto.getPayload().getSource().getDb());
-        log.info("Database Table:   {}", dto.getPayload().getSource().getTable());
-        log.info("Operation Type:   {}", dto.getPayload().getOperationType().toString());
-	    
-	    try {
-			if (dto.getPayload().getAfter() != null) {
-				Dto_Auth_User_Role userRole = objectMapper.convertValue(dto.getPayload().getAfter(), Dto_Auth_User_Role.class);
-				log.info(userRole.toString());
-				
-				String asJson = objectMapper.writeValueAsString(userRole);
-				log.info(asJson);
-			}
-		} catch (Exception e) {
-			log.error(e.getMessage());
-		}
-	}
-
+	
 	@KafkaListener(topics = {"mysql-topic.e050_pyramix_schema.customer_order_tmp"})
 	public void listen_02(DebeziumEventDto dto) {
         log.info(dto.toString());
@@ -92,4 +72,20 @@ public class KafkaConsumer {
         
 	}
 	
+	@KafkaListener(topics = {"mysql-topic.e050_pyramix_schema.auth_user"})
+	public void listen_03(DebeziumEventDto dto) {
+		log.info(dto.toString());
+		
+		try {
+			if (dto.getPayload().getAfter() != null) {
+				Dto_Auth_User authUser = 
+						objectMapper.convertValue(dto.getPayload().getAfter(), 
+								Dto_Auth_User.class);
+				log.info(authUser.toString());
+			}
+		} catch (Exception e) {
+			log.error(e.getMessage());
+		}
+
+	}	
 }
