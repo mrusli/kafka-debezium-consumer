@@ -87,5 +87,10 @@ public class KafkaConsumer {
 			log.error(e.getMessage());
 		}
 
-	}	
+	}
+	
+	@KafkaListener(topics = {"streamingTopic2"})
+	public void listen_04(DebeziumEventDto dto) {
+		log.info(dto.toString());
+	}
 }
